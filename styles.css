@@ -280,8 +280,7 @@ html, body {
     right: 0;
     bottom: 0;
     background-color: #3A3A3C;
-    -webkit-transition: .4s;
-    transition: .4s;
+    transition: background-color 0.3s ease-out;
   }
   
   .slider:before {
@@ -325,6 +324,9 @@ html, body {
   /* tag */
 
  .tag {
+
+    transition: background-color 0.3s ease-out;
+
     position: absolute;
     bottom: 2%;
     right: 2%;
