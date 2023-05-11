@@ -10,6 +10,9 @@ const MAX_ATTEMPTS = 6;
 const history = [];
 let currentWord = '';
 
+var streak = 0;
+var score = 0;
+
 const WORD_LIST = [ 'SHREY', 'KARAN', 'KEVIN', 'ENRIK', 
                     'ETHAN', 'MEHEE', 'MEGAS', 'BIGGS',
                     'GABBY', 'LIAMS', 'ERZUM', 'GREEK',
@@ -38,6 +41,8 @@ const init = () => {
     generateBoard(gameBoard);
     generateBoard(keyboardBoard, 3, 10, KEYBOARD_KEYS, true);
 
+    updateScore();
+
     // make event listeners
     document.addEventListener('keydown', event => onKeyDown(event.key));
     keyboard.addEventListener('click', onKeyboardButtonClick);
@@ -54,6 +59,8 @@ const reInit = () => {
 
     console.log('Game restarted!');
 
+    updateScore();
+    
     // reset history
     history.length = 0;
 
@@ -305,6 +312,9 @@ const generateBoard = (board, rows = 6, columns = 5, keys = [], keyboard = false
             console.log('We have a winner!');
             showMessage("You won!"); 
 
+            score++;
+            streak++;
+
             sleep(2000).then(() => { 
                 reInit();
                 //location.reload();
@@ -318,6 +328,8 @@ const generateBoard = (board, rows = 6, columns = 5, keys = [], keyboard = false
         sleep(1600).then(() => { 
             console.log('We have a loser!');
             showMessage("You lost!"); 
+
+            streak = 0;
 
             sleep(400).then(() => { 
                 showMessage("The word was: " + WORD_OF_THE_DAY + ".");
@@ -333,11 +345,17 @@ const generateBoard = (board, rows = 6, columns = 5, keys = [], keyboard = false
 
     history.push(currentWord);
     currentWord = '';
- }
+}
 
  function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
+const updateScore = () => {
+    console.log("Score updated.");
+    document.getElementById("score").innerHTML = `Total: ${score}`;
+    document.getElementById("streak").innerHTML = `Streak: ${streak}`;
+};
 
 // call init when dom is loaded, get everything set up
 document.addEventListener('DOMContentLoaded', init);
