@@ -18,10 +18,13 @@ const WORD_LIST = [ 'SHREY', 'KARAN', 'KEVIN', 'ENRIK',
                     'KATHY', 'JUMPY', 'ZEEES', 'EMILY',
                     'MUDAE', 'RYTHM', 'LIMES', 'EMANS', 'JARED']
 
-const WORD_OF_THE_DAY = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)];
+var WORD_OF_THE_DAY = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)];
 
 // setup everything on start
 const init = () => {
+
+    WORD_OF_THE_DAY = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)];
+
     console.log('Welcome to 1700s Sea Shanties-dle!');
 
     // make kb
@@ -41,6 +44,33 @@ const init = () => {
     gameBoard.addEventListener('animationend', event =>  {
         event.target.setAttribute('data-animation', 'idle');
     });
+
+}
+
+// set up everything to restart game
+const reInit = () => {
+
+    WORD_OF_THE_DAY = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)];
+
+    console.log('Game restarted!');
+
+    // reset history
+    history.length = 0;
+
+    // make kb
+    const KEYBOARD_KEYS = [ 'QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM' ]
+
+    // grab boards
+    const gameBoard = document.querySelector('#board');
+    const keyboardBoard = document.querySelector('#keyboard');
+
+    // clear boards
+    gameBoard.innerHTML = '';
+    keyboardBoard.innerHTML = '';
+
+    // generate boards
+    generateBoard(gameBoard);
+    generateBoard(keyboardBoard, 3, 10, KEYBOARD_KEYS, true);
 
 }
 
@@ -137,7 +167,7 @@ const generateBoard = (board, rows = 6, columns = 5, keys = [], keyboard = false
 
     let targetColumn = currentRow.querySelector(`li[data-status='empty']`);
 
-   
+
 
     // uppercase letter and validate, then add
     const upperCaseLetter = key.toUpperCase();
@@ -262,9 +292,45 @@ const generateBoard = (board, rows = 6, columns = 5, keys = [], keyboard = false
         }
     });
 
+    let won = true;
+    currentRow.querySelectorAll('li').forEach((element, index) => {
+        if (element.getAttribute('data-status') !== 'valid') {
+            won = false;
+        }
+    });
+
+    if (won) {
+        sleep(2000).then(() => { 
+            console.log('We have a winner!');
+            showMessage("You won!"); 
+
+            sleep(2000).then(() => { 
+                reInit();
+                //location.reload();
+            });
+        });
+    }
+
+    if (currentRow.getAttribute('data-row') == 5) {
+        sleep(1600).then(() => { 
+            console.log('We have a loser!');
+            showMessage("You lost!"); 
+
+            sleep(2000).then(() => { 
+                reInit();
+                //location.reload();
+            });
+        });
+    }
+
+
     history.push(currentWord);
     currentWord = '';
  }
+
+ function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
 // call init when dom is loaded, get everything set up
 document.addEventListener('DOMContentLoaded', init);
