@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:wght@100;300;400;700&display=swap');
+
+:root {
+    
+    --color-black: #121213;
+    --color-white: #fff;
+    --color-green: #538d4e;
+    --color-yellow: #B59F3B;
+    --color-gray-dark: #3A3A3C;
+    --color-gray-light: #626465;
+
+    --color-tag: #fff2e2;
+    --color-hover: #3A3A3C;
+    
+/*
+    --color-black: #fff2e2;
+    --color-white: #554941;
+    --color-green: #9dba9b;
+    --color-yellow: #b9b18f;
+    --color-gray-dark: #9b867b;
+    --color-gray-light: #d7b7a65f;
+
+    --color-tag: #3A3A3C;
+    --color-hover: #bfa99d;
+*/
+
+}
+
+html {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background: var(--color-black);
+    color: var(--color-white);
+
+    font-family: 'Roboto', sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+header {
+    border-bottom: 1px solid var(--color-gray-dark);
+    width: 90%;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 10px 0;
+    padding: 0;
+    text-align: center;
+    font-weight: 200;
+    font-size: 4rem;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#board, #keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-transform: uppercase;
+}
+
+#board ul,
+#keyboard ul {
+    display: flex;
+    list-style: none;
+    gap: 6px;
+    padding: 0;
+    margin: 0;
+}
+
+#board ul li {
+    font-weight: 400;
+}
+
+[data-status],
+[data-key] {
+    border :2px solid var(--color-gray-dark);
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2rem;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 4rem;
+    width: 4rem;
+    user-select: none;
+    margin-top: 0.3rem;
+}
+
+.toaster {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    pointer-events: none;
+    width: fit-content;
+}
+
+.toaster ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toast {
+    background-color: var(--color-white);
+    border-radius: 4px;
+    color: var(--color-black);
+    padding: 1rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.fade {
+    opacity: 0;
+}
+
+#keyboard {
+    gap: 8px;
+    padding-bottom: 4rem;
+}
+
+#keyboard ul {
+    justify-content: center;
+}
+
+[data-key]{
+    background-color: var(--color-gray-light);
+    border: none;
+    border-radius: 4px;
+
+    font-size: 1rem;
+
+    height: 3.8rem;
+    width: 2.8rem;
+    
+    cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
+}
+
+[data-key='Enter'] {
+    width: 6rem;
+}
+
+[data-key='Backspace'] {
+    width: 7rem;
+}
+
+[data-key]:hover, #keyboard li:hover {
+    background-color: var(--color-hover);
+    color: var(--color-white);
+}
+
+/**
+ * Status colors/animations
+ */
+[data-status='filled'] {
+    border:1px solid var(--color-gray-dark);
+}
+
+[data-status='valid'] {
+    background: var(--color-green);
+}
+
+[data-status='invalid'] {
+    background: var(--color-yellow);
+}
+
+[data-status='none'] {
+    background: var(--color-gray-dark);
+}
+
+[data-animation='pop'] {
+    animation: PopIn 100ms; 
+}
+@keyframes PopIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    40% {
+        transform: scale(1.1);
+        opacity: 1
+    }
+}
+
+[data-animation='invalid'] {
+    animation: Shake 600ms; 
+}
+@keyframes Shake {
+    from {
+        transform: translateX(-1px);
+    }
+    20%, 80% {
+        transform: translateX(2px);
+    }
+    30%, 50%, 70% {
+        transform: translateX(-4px);
+    }
+}
+
+[data-animation='flip']     { 
+    animation: Flip .50s ease-in; }
+
+@keyframes Flip {
+  from {
+    transform: rotateX(0);
+  }
+  50% {
+    transform: rotateX(-90deg);
+  }
+  to {
+    transform: rotateX(0);
+  }
+}
+
+html, body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Slider Switch */
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #3A3A3C;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--color-tag);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #fff2e2;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--color-white);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+
+
+  /* tag */
+
+ .tag {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    justify-content: center;
+
+    font-size: 20px;
+    background-color: var(--color-tag);
+    border-radius: 15px;
+    box-shadow: 0 0 15px 7px rgba(0, 0, 0, 0.295);
+    color:var(--color-black);
+    
+    width: 300px;
+    height: 50px;
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto auto;
+
+    gap: 10px;
+  }
+
+  .tag a {
+    color:inherit;
+  }
+
+  .tag a:hover {
+    color: #454343;
+  }
+
+  .wholeSwitch{
+    position: relative;
+    left: 6px;
+  }
+
