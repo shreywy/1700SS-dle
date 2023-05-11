@@ -13,9 +13,9 @@ let currentWord = '';
 const WORD_LIST = [ 'SHREY', 'KARAN', 'KEVIN', 'ENRIK', 
                     'ETHAN', 'MEHEE', 'MEGAS', 'BIGGS',
                     'GABBY', 'LIAMS', 'ERZUM', 'GREEK',
-                    'ROHAN', 'BRYCE', 'ARJUN',
+                    'ROHAN', 'BRYCE', 'ARJUN', 'BRIAN',
                     'CHRIS', 'CLYDE', 'DRAKE', 'JOHAR',
-                    'KATHY', 'JUMPY', 'ZEEES', 
+                    'KATHY', 'JUMPY', 'ZEEES', 'EMILY',
                     'MUDAE', 'RYTHM', 'LIMES', 
                     'ANIME', 'MANGA', 'SKULL', 
                     'EMOJI', 'EMANS', 'JARED']
