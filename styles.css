@@ -10,7 +10,7 @@
     --color-gray-light: #626465;
 
     --color-tag: #fff2e2;
-    --color-hover: #3A3A3C;
+    --color-hover: #8b8b8b59;
     
 /*
     --color-black: #fff2e2;
@@ -29,6 +29,7 @@
 html {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+
 }
 
 *, *:before, *:after {
@@ -36,6 +37,9 @@ html {
 }
 
 body {
+
+    transition: background-color 0.3s ease-out;
+
     background: var(--color-black);
     color: var(--color-white);
 

@@ -99,7 +99,7 @@ const switchTheme = () => {
         r.style.setProperty('--color-gray-dark', '#3A3A3C');
         r.style.setProperty('--color-gray-light', '#626465');
         r.style.setProperty('--color-tag', '#fff2e2');
-        r.style.setProperty('--color-hover', ' ##3A3A3C');
+        r.style.setProperty('--color-hover', ' #8b8b8b59');
     }
 
 };
