@@ -14,11 +14,9 @@ const WORD_LIST = [ 'SHREY', 'KARAN', 'KEVIN', 'ENRIK',
                     'ETHAN', 'MEHEE', 'MEGAS', 'BIGGS',
                     'GABBY', 'LIAMS', 'ERZUM', 'GREEK',
                     'ROHAN', 'BRYCE', 'ARJUN', 'BRIAN',
-                    'CHRIS', 'CLYDE', 'DRAKE', 'JOHAR',
+                    'CHRIS', 'CLYDE', 'JOHAR',
                     'KATHY', 'JUMPY', 'ZEEES', 'EMILY',
-                    'MUDAE', 'RYTHM', 'LIMES', 
-                    'ANIME', 'MANGA', 'SKULL', 
-                    'EMOJI', 'EMANS', 'JARED']
+                    'MUDAE', 'RYTHM', 'LIMES', 'EMANS', 'JARED']
 
 const WORD_OF_THE_DAY = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)];
 
