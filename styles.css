@@ -61,6 +61,7 @@ h1 {
     text-align: center;
     font-weight: 200;
     font-size: 4rem;
+    cursor: default;
 }
 
 main {
