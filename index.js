@@ -300,6 +300,7 @@ const generateBoard = (board, rows = 6, columns = 5, keys = [], keyboard = false
     });
 
     if (won) {
+
         sleep(2000).then(() => { 
             console.log('We have a winner!');
             showMessage("You won!"); 
@@ -312,9 +313,15 @@ const generateBoard = (board, rows = 6, columns = 5, keys = [], keyboard = false
     }
 
     if (currentRow.getAttribute('data-row') == 5) {
+
+        
         sleep(1600).then(() => { 
             console.log('We have a loser!');
             showMessage("You lost!"); 
+
+            sleep(400).then(() => { 
+                showMessage("The word was: " + WORD_OF_THE_DAY + ".");
+            });
 
             sleep(2000).then(() => { 
                 reInit();
