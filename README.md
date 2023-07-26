@@ -1,7 +1,7 @@
 ## 1700SS-dle!
 A Worlde clone which uses names and terms from my friend group.
-The full list of words can be seen below. (or in index.js) 
-This was my first time using javascript, here is where some of the code is from: (https://youtu.be/M-uKFV8a1C8)
+The full list of words can be seen below. (or in index.js).
+This was my first time using javascript, here is where some of the code is from: (https://youtu.be/M-uKFV8a1C8).
 
 TODO: Restart game once finished. Scores?
 
